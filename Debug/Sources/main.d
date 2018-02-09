@@ -1,7 +1,7 @@
 Sources/main.o: ../Sources/main.c \
- D:\Downloads\College\6th\ Semeseter\CSE\ 325\Projects\Project\ 2\CSE-325-proj-2-\project\ 2\board/board.h \
- D:\Downloads\College\6th\ Semeseter\CSE\ 325\Projects\Project\ 2\CSE-325-proj-2-\project\ 2\board/pin_mux.h \
- D:\Downloads\College\6th\ Semeseter\CSE\ 325\Projects\Project\ 2\CSE-325-proj-2-\project\ 2\board/gpio_pins.h \
+ C:\Users\rmeuth\workspace.kds\Template\ Project\ (Rename\ Me!)\board/board.h \
+ C:\Users\rmeuth\workspace.kds\Template\ Project\ (Rename\ Me!)\board/pin_mux.h \
+ C:\Users\rmeuth\workspace.kds\Template\ Project\ (Rename\ Me!)\board/gpio_pins.h \
  C:\Freescale\KSDK_1.3.0\platform\drivers\inc/fsl_gpio_driver.h \
  C:\Freescale\KSDK_1.3.0\platform\hal\inc/fsl_port_hal.h \
  C:\Freescale\KSDK_1.3.0\platform\devices/fsl_device_registers.h \
@@ -19,11 +19,11 @@ Sources/main.o: ../Sources/main.c \
  C:\Freescale\KSDK_1.3.0\platform\osa\inc/fsl_os_abstraction.h \
  C:\Freescale\KSDK_1.3.0\platform\osa\inc/fsl_os_abstraction_bm.h
 
-D:\Downloads\College\6th\ Semeseter\CSE\ 325\Projects\Project\ 2\CSE-325-proj-2-\project\ 2\board/board.h:
+C:\Users\rmeuth\workspace.kds\Template\ Project\ (Rename\ Me!)\board/board.h:
 
-D:\Downloads\College\6th\ Semeseter\CSE\ 325\Projects\Project\ 2\CSE-325-proj-2-\project\ 2\board/pin_mux.h:
+C:\Users\rmeuth\workspace.kds\Template\ Project\ (Rename\ Me!)\board/pin_mux.h:
 
-D:\Downloads\College\6th\ Semeseter\CSE\ 325\Projects\Project\ 2\CSE-325-proj-2-\project\ 2\board/gpio_pins.h:
+C:\Users\rmeuth\workspace.kds\Template\ Project\ (Rename\ Me!)\board/gpio_pins.h:
 
 C:\Freescale\KSDK_1.3.0\platform\drivers\inc/fsl_gpio_driver.h:
 
