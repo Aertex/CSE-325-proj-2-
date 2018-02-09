@@ -516,7 +516,7 @@ char codesearch(char* code) //give concatinated string to search for
 		{ '6', "/...." }, { '7', "//..." }, { '8', "///.." }, { '9', "////." }, { '0', "/////" }
 					}
 
-	for (int j = 0; j < sizeof(key) / sizeof(*key); i++) //search through array linearly 
+	for (int j = 0; j < 36; i++) //search through array linearly , letters + numbers
 	{
 		if (key[i].code == code) letter = key[i].letter;
 	}
