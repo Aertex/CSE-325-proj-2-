@@ -502,7 +502,7 @@ void doNothingFor(int time)
 char codesearch(char* code) //give concatinated string to search for
 {
 	char letter;
-	keyarr key[] = 
+	/*keyarr key[] =
 					{ //huge array to compare things to
 		{ 'A', "./" }, { 'B', "/..." }, { 'C', "/./." }, { 'D', "/.." }, { 'E', "." }, { 'F', "../." }, { 'G', "//." },
 
@@ -520,7 +520,7 @@ char codesearch(char* code) //give concatinated string to search for
 	{
 		if (key[i].code == code) letter = key[i].letter;
 	}
-
+*/
 	return letter;
 
 }
@@ -530,7 +530,109 @@ int main(void)
     LED1_EN;
 
 
-	
+	PRINTF("Light Sensor");
+
+
+
+
+	unsigned short cal_v = 0;
+	unsigned char light_val = 0;
+
+		hardware_init(); // Do clock setup stuff.
+		// Clock Gating
+		SIM_SCGC5 |= (1<<13); // Enable Light Sensor I/O Port
+		SIM_SCGC5 |= (1<<12);
+		SIM_SCGC6 |= (1<<27); // Enable ADC Module
+
+		// Setup Analog Input - Default is analog (PTE22), No need to do anything.
+
+		// Setup LED Pin for GPIO
+		PORTD_PCR5 &= ~0x700; // Clear First
+		PORTD_PCR5 |= 0x700 & (1 << 8); // Set MUX bits
+
+		// Setup Pin 5 as output
+		GPIOD_PDDR |= (1 << 5);
+
+		// Setup ADC Clock ( < 4 MHz)
+		ADC0_CFG1 = 0;  // Default everything.
+
+		// Analog Calibrate
+		ADC0_SC3 = 0x07; // Enable Maximum Hardware Averaging
+		ADC0_SC3 |= 0x80; // Start Calibration
+
+		// Wait for Calibration to Complete (either COCO or CALF)
+		while(!(ADC0_SC1A & 0x80)){	}
+
+
+		// Calibration Complete, write calibration registers.
+		cal_v = ADC0_CLP0 + ADC0_CLP1 + ADC0_CLP2 + ADC0_CLP3 + ADC0_CLP4 + ADC0_CLPS;
+		cal_v = cal_v >> 1 | 0x8000;
+		ADC0_PG = cal_v;
+
+		cal_v = 0;
+		cal_v = ADC0_CLM0 + ADC0_CLM1 + ADC0_CLM2 + ADC0_CLM3 + ADC0_CLM4 + ADC0_CLMS;
+		cal_v = cal_v >> 1 | 0x8000;
+		ADC0_MG = cal_v;
+
+
+		ADC0_SC3 = 0; // Turn off Hardware Averaging
+	    /* Never leave main */
+
+
+		while(1) {
+			ADC0_SC1A = 0x03; // Set Channel, starts conversion.
+			while(!(ADC0_SC1A & 0x80)){	}
+			//delay(1000);
+			light_val = ADC0_RA; // Resets COCO
+			if(light_val < 250) {
+				GPIOD_PDOR |= (1<<5);
+			}
+			else {
+				GPIOD_PDOR &= ~(1<<5);
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/*
 	char* message = "ABC.";
@@ -552,11 +654,12 @@ int main(void)
 
 
     /* This for loop should be replaced. By default this loop allows a single stepping. */
-    for (;;) {
-        i++;
-    }
+    //for (;;) {
+    //    i++;
+    //}
     /* Never leave main */
     return 0;
+
 }
 ////////////////////////////////////////////////////////////////////////////////
 // EOF
