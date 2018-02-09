@@ -35,6 +35,16 @@
 
 static int i = 0;
 
+struct keyarr
+{
+	char letter;
+	char* code;
+};
+
+
+
+//not sure if any of this will be usefull
+/*
 void displayMorse(char *message, int length)
 {
 
@@ -487,16 +497,58 @@ void doNothingFor(int time)
 
 	}
 }
+*/
+
+char codesearch(char* code) //give concatinated string to search for
+{
+	char letter;
+	keyarr key[] = 
+					{ //huge array to compare things to
+		{ 'A', "./" }, { 'B', "/..." }, { 'C', "/./." }, { 'D', "/.." }, { 'E', "." }, { 'F', "../." }, { 'G', "//." },
+
+		{ 'H', "...." }, { 'I', ".." }, { 'J', ".///" }, { 'K', "/./" }, { 'L', "./.." }, { 'M', "//" }, { 'N', "/." }, { 'O', "///" },
+
+		{ 'P', ".//." }, { 'Q', "//./" }, { 'R', "./." }, { 'S', "..." }, { 'T', "/" }, { 'U', "../" }, { 'V', ".../" }, { 'W', ".//" },
+
+		{ 'X', "/../" }, { 'Y', "/.//" }, { 'Z', "//.." },
+
+		{ '1', ".////" }, { '2', "..///" }, { '3', "...//" }, { '4', "..../" }, { '5', "....." },
+		{ '6', "/...." }, { '7', "//..." }, { '8', "///.." }, { '9', "////." }, { '0', "/////" }
+					}
+
+	for (int j = 0; j < sizeof(key) / sizeof(*key); i++) //search through array linearly 
+	{
+		if (key[i].code == code) letter = key[i].letter;
+	}
+
+	return letter;
+
+}
 int main(void)
 {
-	hardware_init();
+	hardware_init(); //need to enable light sens
     LED1_EN;
 
 
+	
+
+	/*
 	char* message = "ABC.";
 	int length=strlen(message);
 
 	displayMorse(message, length);
+
+	*/
+
+	//need to code a way to concatinate a . or / onto a char* based on time a light is on/off
+
+
+
+
+
+
+
+
 
 
     /* This for loop should be replaced. By default this loop allows a single stepping. */
