@@ -32,6 +32,7 @@
 #include "fsl_device_registers.h"
 #include "fsl_debug_console.h"
 #include <string.h>
+#include <time.h>
 
 static int i = 0;
 
@@ -42,18 +43,11 @@ struct keyarr
 	char* code;
 };
 
-char codesearch(char* code) //give concatinated string to search for
-{
-	struct keyarr
-	{
-		char letter;
-		char* code;
-	};
 
 	char codesearch(char* code) //give concatinated string to search for
 	{
 		char letter;
-		struct keyarr key[36] =
+		struct keyarr key[37] =
 		{ //huge array to compare things to
 			{ 'A', "./" }, { 'B', "/..." }, { 'C', "/./." }, { 'D', "/.." }, { 'E', "." }, { 'F', "../." }, { 'G', "//." },
 
@@ -67,7 +61,7 @@ char codesearch(char* code) //give concatinated string to search for
 			{ '6', "/...." }, { '7', "//..." }, { '8', "///.." }, { '9', "////." }, { '0', "/////" }
 		};
 
-		for (int j = 0; j < 36; j++) //search through array, letters + numbers
+		for (int j = 0; j < 37; j++) //search through array, letters + numbers
 		{
 			if (key[j].code == code) letter = key[j].letter;
 		}
@@ -77,49 +71,6 @@ char codesearch(char* code) //give concatinated string to search for
 	}
 
 
-}
-
-
-//not sure if any of this will be usefull
-/*
-void displayMorse(char *message, int length)
-{
-
-	char temp;
-
-	for(int i = 0; i < length; i++)
-	{
-		temp = message[i];
-
-		switch(temp)
-		{
-		case '.':
-			i = length;
-				break;
-
-
-}
-void turnOnFor(int time)
-{
-
-	LED1_ON;//led toggle on
-	for(int i =0;i<4000*time;i++)//led wait 'time'
-	{
-
-	}
-	LED1_OFF;//led toggle off
-}
-
-void doNothingFor(int time)
-{
-
-	for(int i =0;i<4000*time;i++)//do nothing time
-	{
-
-	}
-}
-*/
-
 
 int main(void)
 {
@@ -127,16 +78,7 @@ int main(void)
     LED1_EN;
 
 
-	PRINTF("Light Sensor\n");
-
-	/*     format for searching the thing
-	char *c = "////.";
-    char letter = codesearch(c);
-    
-    printf("%s\n",c);
-    
-    printf("%c",letter);
-*/
+	PRINTF("\rLight Sensor\n");
 
 
 	unsigned short calibration = 0;
@@ -181,6 +123,25 @@ int main(void)
 
 		ADC0_SC3 = 0; // Turn off Hardware Averaging
 
+		/*     format for searching the thing
+		char *c = "////.";
+	    char letter = codesearch(c);
+
+	    printf("%s\n",c);
+
+	    printf("%c",letter);
+	*/
+
+
+
+
+		int fsm1 = 0; //if previous state was on
+		int fsm2 = 1; //if previous state was off
+		int timebool=0;
+		int time = 0;
+		int offtime = 0;
+		char *code="";
+		char letter;
 		while(1) {
 			ADC0_SC1A = 0x03; // Set Channel, starts conversion.
 			while(!(ADC0_SC1A & 0x80)){	}
@@ -188,22 +149,76 @@ int main(void)
 			lights = ADC0_RA; // Resets COCO
 
 
-			PRINTF("\rLight Sensor Value: %d",lights);
+			//PRINTF("\rLight Sensor Value: %d",lights);
 
 
 
 			//read in light values
-			if(lights < 250) {
-				GPIOD_PDOR |= (1<<5);
-			}
-			else {
-				GPIOD_PDOR &= ~(1<<5);
+			if(lights < 254) { //if light is on
+				GPIOD_PDOR &= ~(1<<5);//turns on
+				time++;
+				offtime = 0;
+				if(fsm2 == 1) //if light was previously off
+				{
+
+					fsm1=1; //last state on
+					fsm2=0;
+					timebool=0;
+				}
 
 			}
+			else { //if light is off
+				offtime++;
+				time=0;
+				GPIOD_PDOR |= (1<<5); //turns off
+				if(fsm1==1) //if light was previously on
+				{
+
+					fsm1=0;
+					fsm2=1;
+					timebool=1;
+				}
+			}
 
 
+			if(timebool)
+			{
+				timebool = 0;
+				PRINTF("time %d", time); //debug
 
 
+/*
+				if(70000<time||time<73000) //.
+				{
+					int code_length = strlen(code); //append dots
+					code[code_length]='.';
+					code[code_length+1]= '\0';
+				}
+				else if(70600*3<time||time<70800*3) // /
+				{
+					int code_length = strlen(code); //append dashes
+					code[code_length]='/';
+					code[code_length+1]= '\0';
+				}
+
+				}
+
+*/
+				time = 0;
+			}
+
+			if(1000*3<offtime)//||offtime <57800*3)
+				{
+				PRINTF("OFFTIME EXCEDDED");
+				}
+				if(code=="")
+				{
+							letter = codesearch(code);
+
+				    		PRINTF("%c",letter);
+				    		code = "";
+				}
+				    		offtime=0;
 
 
 
@@ -211,70 +226,6 @@ int main(void)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*
-	char* message = "ABC.";
-	int length=strlen(message);
-
-	displayMorse(message, length);
-
-	*/
-
-	//need to code a way to concatinate a . or / onto a char* based on time a light is on/off
-
-
-
-
-
-
-
-
-
-
-    /* This for loop should be replaced. By default this loop allows a single stepping. */
-    //for (;;) {
-    //    i++;
-    //}
-    /* Never leave main */
     return 0;
 
 }
