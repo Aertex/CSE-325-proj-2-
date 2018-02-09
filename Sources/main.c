@@ -123,14 +123,7 @@ int main(void)
 
 		ADC0_SC3 = 0; // Turn off Hardware Averaging
 
-		/*     format for searching the thing
-		char *c = "////.";
-	    char letter = codesearch(c);
 
-	    printf("%s\n",c);
-
-	    printf("%c",letter);
-	*/
 
 
 
@@ -149,77 +142,79 @@ int main(void)
 			lights = ADC0_RA; // Resets COCO
 
 
-			//PRINTF("\rLight Sensor Value: %d",lights);
+			PRINTF("\rLight Sensor Value: %d",lights);
 
 
 
 			//read in light values
-			if(lights < 254) { //if light is on
+			if(lights <= 252) { //if light is on
 				GPIOD_PDOR &= ~(1<<5);//turns on
 				time++;
-				offtime = 0;
+
+
 				if(fsm2 == 1) //if light was previously off
 				{
-
+					PRINTF(" toggled on, off time= %d\n", offtime);
 					fsm1=1; //last state on
 					fsm2=0;
 					timebool=0;
+					offtime = 0;
 				}
+
+
 
 			}
 			else { //if light is off
-				offtime++;
-				time=0;
+
+
 				GPIOD_PDOR |= (1<<5); //turns off
+				offtime++;
 				if(fsm1==1) //if light was previously on
 				{
-
+					PRINTF(" TOGGLED off, on time = %d\n", time);
 					fsm1=0;
 					fsm2=1;
 					timebool=1;
+					time=0;
 				}
+
 			}
 
 
 			if(timebool)
 			{
+
+				 if(140 < time&&time<160) //.
+				            {
+				                int code_length = strlen(code); //append dots
+				                code[code_length]='.';
+				                code[code_length+1]= '\0';
+				            }
+				            else if(440<time&&time<460) // /
+				            {
+				                int code_length = strlen(code); //append dashes
+				                code[code_length]='/';
+				                code[code_length + 1]= '\0';
+				            }
+
+
 				timebool = 0;
-				PRINTF("time %d", time); //debug
-
-
-/*
-				if(70000<time||time<73000) //.
-				{
-					int code_length = strlen(code); //append dots
-					code[code_length]='.';
-					code[code_length+1]= '\0';
-				}
-				else if(70600*3<time||time<70800*3) // /
-				{
-					int code_length = strlen(code); //append dashes
-					code[code_length]='/';
-					code[code_length+1]= '\0';
-				}
-
-				}
-
-*/
 				time = 0;
 			}
 
-			if(1000*3<offtime)//||offtime <57800*3)
+			if(offtime > 615)
 				{
-				PRINTF("OFFTIME EXCEDDED");
-				}
-				if(code=="")
+				PRINTF(" OFFTIME EXCEDDED, DUMPING\n");
+
+				if(code[0]!='\0')
 				{
 							letter = codesearch(code);
 
-				    		PRINTF("%c",letter);
-				    		code = "";
+				    		PRINTF(" %c\n",letter);
+				    		code[0] = '\0';
 				}
 				    		offtime=0;
-
+				}
 
 
 		}
