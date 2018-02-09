@@ -44,27 +44,38 @@ struct keyarr
 
 char codesearch(char* code) //give concatinated string to search for
 {
-	char letter;
-	struct keyarr key[] =
-	{ //huge array to compare things to
-		{ 'A', "./" }, { 'B', "/..." }, { 'C', "/./." }, { 'D', "/.." }, { 'E', "." }, { 'F', "../." }, { 'G', "//." },
-
-		{ 'H', "...." }, { 'I', ".." }, { 'J', ".///" }, { 'K', "/./" }, { 'L', "./.." }, { 'M', "//" }, { 'N', "/." }, { 'O', "///" },
-
-		{ 'P', ".//." }, { 'Q', "//./" }, { 'R', "./." }, { 'S', "..." }, { 'T', "/" }, { 'U', "../" }, { 'V', ".../" }, { 'W', ".//" },
-
-		{ 'X', "/../" }, { 'Y', "/.//" }, { 'Z', "//.." },
-
-		{ '1', ".////" }, { '2', "..///" }, { '3', "...//" }, { '4', "..../" }, { '5', "....." },
-		{ '6', "/...." }, { '7', "//..." }, { '8', "///.." }, { '9', "////." }, { '0', "/////" }
+	struct keyarr
+	{
+		char letter;
+		char* code;
 	};
 
-	for (int j = 0; j < 36; j++) //search through array linearly , letters + numbers
+	char codesearch(char* code) //give concatinated string to search for
 	{
-		if (key[j].code == code) letter = key[j].letter;
+		char letter;
+		struct keyarr key[36] =
+		{ //huge array to compare things to
+			{ 'A', "./" }, { 'B', "/..." }, { 'C', "/./." }, { 'D', "/.." }, { 'E', "." }, { 'F', "../." }, { 'G', "//." },
+
+			{ 'H', "...." }, { 'I', ".." }, { 'J', ".///" }, { 'K', "/./" }, { 'L', "./.." }, { 'M', "//" }, { 'N', "/." }, { 'O', "///" },
+
+			{ 'P', ".//." }, { 'Q', "//./" }, { 'R', "./." }, { 'S', "..." }, { 'T', "/" }, { 'U', "../" }, { 'V', ".../" }, { 'W', ".//" },
+
+			{ 'X', "/../" }, { 'Y', "/.//" }, { 'Z', "//.." },
+
+			{ '1', ".////" }, { '2', "..///" }, { '3', "...//" }, { '4', "..../" }, { '5', "....." },
+			{ '6', "/...." }, { '7', "//..." }, { '8', "///.." }, { '9', "////." }, { '0', "/////" }
+		};
+
+		for (int j = 0; j < 36; j++) //search through array, letters + numbers
+		{
+			if (key[j].code == code) letter = key[j].letter;
+		}
+
+		return letter;
+
 	}
 
-	return letter;
 
 }
 
@@ -118,7 +129,14 @@ int main(void)
 
 	PRINTF("Light Sensor\n");
 
-
+	/*     format for searching the thing
+	char *c = "////.";
+    char letter = codesearch(c);
+    
+    printf("%s\n",c);
+    
+    printf("%c",letter);
+*/
 
 
 	unsigned short calibration = 0;
