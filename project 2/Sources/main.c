@@ -86,423 +86,7 @@ void displayMorse(char *message, int length)
 			i = length;
 				break;
 
-		case 'A':
-			turnOnFor(250);//dot
-			doNothingFor(250);//space between dot/dash
-			turnOnFor(750);//dash
-			doNothingFor(750);//space between letter
-				break;
-		case 'B':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
 
-
-			doNothingFor(750);
-				break;
-		case 'C':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-		case 'D':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-		case 'E':
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-		case 'F':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-		case 'G':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'H':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-		case 'I':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'J':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-			doNothingFor(750);
-				break;
-		case 'K':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'L':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-		case 'M':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-			doNothingFor(750);
-				break;
-		case 'N':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'O':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'P':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-		case 'Q':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-			doNothingFor(750);
-				break;
-		case 'R':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'S':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'T':
-			turnOnFor(750);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'U':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'V':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-			doNothingFor(750);
-				break;
-		case 'W':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-
-			doNothingFor(750);
-				break;
-		case 'X':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-			doNothingFor(750);
-				break;
-		case 'Y':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-
-			doNothingFor(750);
-				break;
-		case 'Z':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-
-			doNothingFor(750);
-				break;
-
-		case '0':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-			doNothingFor(750);
-				break;
-		case '1':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-			doNothingFor(750);
-				break;
-		case '2':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-			doNothingFor(750);
-				break;
-		case '3':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-
-			doNothingFor(750);
-				break;
-		case '4':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(750);
-
-			doNothingFor(750);
-				break;
-		case '5':
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-			doNothingFor(750);
-				break;
-		case '6':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-			doNothingFor(750);
-				break;
-		case '7':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-			doNothingFor(750);
-				break;
-		case '8':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-			doNothingFor(250);
-			turnOnFor(250);
-
-			doNothingFor(750);
-				break;
-		case '9':
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(750);
-			doNothingFor(250);
-			turnOnFor(250);
-
-			doNothingFor(750);
-				break;
-
-		case ' ':
-			doNothingFor(1000);
-				break;
-		default:
-			doNothingFor(1000);
-				break;
-
-		}
-	}
 }
 void turnOnFor(int time)
 {
@@ -532,13 +116,13 @@ int main(void)
     LED1_EN;
 
 
-	PRINTF("Light Sensor");
+	PRINTF("Light Sensor\n");
 
 
 
 
-	unsigned short cal_v = 0;
-	unsigned char light_val = 0;
+	unsigned short calibration = 0;
+	unsigned char lights = 0;
 
 		hardware_init(); // Do clock setup stuff.
 		// Clock Gating
@@ -567,31 +151,44 @@ int main(void)
 
 
 		// Calibration Complete, write calibration registers.
-		cal_v = ADC0_CLP0 + ADC0_CLP1 + ADC0_CLP2 + ADC0_CLP3 + ADC0_CLP4 + ADC0_CLPS;
-		cal_v = cal_v >> 1 | 0x8000;
-		ADC0_PG = cal_v;
+		calibration = ADC0_CLP0 + ADC0_CLP1 + ADC0_CLP2 + ADC0_CLP3 + ADC0_CLP4 + ADC0_CLPS;
+		calibration = calibration >> 1 | 0x8000;
+		ADC0_PG = calibration;
 
-		cal_v = 0;
-		cal_v = ADC0_CLM0 + ADC0_CLM1 + ADC0_CLM2 + ADC0_CLM3 + ADC0_CLM4 + ADC0_CLMS;
-		cal_v = cal_v >> 1 | 0x8000;
-		ADC0_MG = cal_v;
+		calibration = 0;
+		calibration = ADC0_CLM0 + ADC0_CLM1 + ADC0_CLM2 + ADC0_CLM3 + ADC0_CLM4 + ADC0_CLMS;
+		calibration = calibration >> 1 | 0x8000;
+		ADC0_MG = calibration;
 
 
 		ADC0_SC3 = 0; // Turn off Hardware Averaging
-	    /* Never leave main */
-
 
 		while(1) {
 			ADC0_SC1A = 0x03; // Set Channel, starts conversion.
 			while(!(ADC0_SC1A & 0x80)){	}
 			//delay(1000);
-			light_val = ADC0_RA; // Resets COCO
-			if(light_val < 250) {
+			lights = ADC0_RA; // Resets COCO
+
+
+			PRINTF("\rLight Sensor Value: %d",lights);
+
+
+
+			//read in light values
+			if(lights < 250) {
 				GPIOD_PDOR |= (1<<5);
 			}
 			else {
 				GPIOD_PDOR &= ~(1<<5);
+
 			}
+
+
+
+
+
+
+
 		}
 
 
